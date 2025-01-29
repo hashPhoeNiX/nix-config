@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -19,6 +19,7 @@
   # environment.
   home.packages = with pkgs; [
     htop
+    neovim
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

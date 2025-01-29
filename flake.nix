@@ -29,27 +29,27 @@
 	   pelumi = lib.nixosSystem {
 	       inherit system;
 	       modules = [ 
-		  ./configuration.nix
+		  ./nixos/configuration.nix
 	       ];
 	   };
            test = lib.nixosSystem {
 	       inherit system;
 	       modules = [ 
-		  ./configuration.nix
-		  #home-manager.nixosModules.home-manager 
-		  #{
-                  #   home-manager = {
-		  #      useGlobalPkgs = true;
-                  #      useUserPackages = true;
-		  #      users.test = import ./home.nix;
-		  #      #users.test = {
-		  #      #   imports = [ (import ./home.nix) ];
-		  #      #   home.stateVersion = "24.05";
-		  #      #};
-		  #      # Optionally, use home-manager.extraSpecialArgs to pass
-                  #      # arguments to home.nix
-		  #   };
-		  #}
+		  ./nixos/configuration.nix
+		  home-manager.nixosModules.home-manager 
+		  {
+                     home-manager = {
+		        useGlobalPkgs = true;
+                        useUserPackages = true;
+		        users.test = import ./home.nix;
+		        #users.test = {
+		        #   imports = [ (import ./home.nix) ];
+		        #   home.stateVersion = "24.05";
+		        #};
+		        # Optionally, use home-manager.extraSpecialArgs to pass
+                        # arguments to home.nix
+		     };
+		  }
 	       ];
 	   };
 	};
