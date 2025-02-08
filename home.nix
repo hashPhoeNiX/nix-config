@@ -31,11 +31,11 @@
     # # fonts?
     (nerdfonts.override { 
       fonts = [ 
-        #"FantasqueSansMono"
+        "FantasqueSansMono"
         "JetBrainsMono"
       ]; 
     })
-    #jet-brains-mono
+    jetbrains-mono
     fantasque-sans-mono
 
     # # You can also create simple shell scripts directly inside your
