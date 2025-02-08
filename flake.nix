@@ -44,7 +44,7 @@
                      home-manager = {
 		        useGlobalPkgs = true;
                         useUserPackages = true;
-		        users.test = import ./home.nix;
+		        users.test = import ./home/home.nix;
 		        #users.test = {
 		        #   imports = [ (import ./home.nix) ];
 		        #   home.stateVersion = "24.05";
