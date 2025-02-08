@@ -47,7 +47,7 @@
 		        #users.test = import ./home/home.nix;
 		        users.test = {
 		           imports = [ 
-			      (./home/home.nix) 
+			      (import ./home/home.nix) 
 			   ];
 		        };
 		        # Optionally, use home-manager.extraSpecialArgs to pass
