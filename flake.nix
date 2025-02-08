@@ -44,11 +44,10 @@
                      home-manager = {
 		        useGlobalPkgs = true;
                         useUserPackages = true;
-		        users.test = import ./home/home.nix;
-		        #users.test = {
-		        #   imports = [ (import ./home.nix) ];
-		        #   home.stateVersion = "24.05";
-		        #};
+		        #users.test = import ./home/home.nix;
+		        users.test = {
+		           imports = [ (import ./home/home.nix) ];
+		        };
 		        # Optionally, use home-manager.extraSpecialArgs to pass
                         # arguments to home.nix
 		     };
