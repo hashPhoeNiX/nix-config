@@ -55,7 +55,7 @@
 		     };
 		  }
 		  ./home/nixcats-home.nix
-		  nixCats.nixosModules.default
+		  #nixCats.nixosModules.default
 	       ];
 	   };
 	};
