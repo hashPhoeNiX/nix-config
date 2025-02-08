@@ -35,7 +35,7 @@
         "JetBrainsMono"
       ]; 
     })
-    jet-brains-mono
+    #jet-brains-mono
     fantasque-sans-mono
 
     # # You can also create simple shell scripts directly inside your
