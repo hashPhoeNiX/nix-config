@@ -47,14 +47,16 @@
 		        #users.test = import ./home/home.nix;
 		        users.test = {
 		           imports = [ 
-			      (import ./home/home.nix) 
-			   ];
+			           (import ./home/home.nix)
+                  
+			        ];
 		        };
 		        # Optionally, use home-manager.extraSpecialArgs to pass
                         # arguments to home.nix
 		     };
 		  }
-		  ./home/nixcats-home.nix
+      ./home/nixcats.nix
+		  #./home/nixcats-home.nix
 		  #nixCats.nixosModules.default
 	       ];
 	   };
