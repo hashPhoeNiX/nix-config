@@ -46,7 +46,10 @@
                         useUserPackages = true;
 		        #users.test = import ./home/home.nix;
 		        users.test = {
-		           imports = [ (import ./home/home.nix) ];
+		           imports = [ 
+			      (import ./home/home.nix)
+			      (import ./home/nixcats-home.nix)
+			   ];
 		        };
 		        # Optionally, use home-manager.extraSpecialArgs to pass
                         # arguments to home.nix
