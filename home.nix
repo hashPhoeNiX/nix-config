@@ -31,7 +31,7 @@
     # # fonts?
     (nerdfonts.override { 
       fonts = [ 
-        "FantasqueSansMono"
+        #"FantasqueSansMono"
         "JetBrainsMono"
       ]; 
     })
