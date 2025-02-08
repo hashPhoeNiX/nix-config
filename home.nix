@@ -17,7 +17,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  fonts.fontconfig.enable = true;
+  #fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     htop
     neovim
@@ -30,13 +30,13 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    (nerdfonts.override { 
+    (pkgs.nerdfonts.override { 
       fonts = [ 
-        #"FantasqueSansMono"
+        "FantasqueSansMono"
         "JetBrainsMono"
       ]; 
     })
-    jetbrains-mono
+    #jetbrains-mono
     #fantasque-sans-mono
 
     # # You can also create simple shell scripts directly inside your
