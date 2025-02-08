@@ -55,10 +55,13 @@
                         # arguments to home.nix
 		     };
 		  }
-      ./home/nixcats.nix
+      		 #./home/nixcats.nix
 		  #./home/nixcats-home.nix
 		  #nixCats.nixosModules.default
+                  #nixCats.homeModule.default
 	       ];
+	       nixCats.homeModule.default = import ./home/nixcats.nix;
+
 	   };
 	};
     };
