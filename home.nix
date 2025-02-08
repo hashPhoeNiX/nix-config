@@ -31,12 +31,12 @@
     # # fonts?
     (nerdfonts.override { 
       fonts = [ 
-        "FantasqueSansMono"
+        #"FantasqueSansMono"
         "JetBrainsMono"
       ]; 
     })
     jetbrains-mono
-    fantasque-sans-mono
+    #fantasque-sans-mono
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
