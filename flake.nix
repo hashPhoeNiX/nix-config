@@ -10,13 +10,16 @@
         url = "github:nix-community/home-manager/release-24.05";
  	inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixCats = {
+	url = "github:BirdeeHub/nixCats-nvim";
+    }; 
     #hyprland = {
     #    url = "github:hyprwm/Hyprland";
     #	inputs.nixpkgs.follows = "nixpkgs";
     #};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixCats, ... }:
      let
         system = "aarch64-linux";
         pkgs = import nixpkgs {
@@ -50,6 +53,7 @@
                         # arguments to home.nix
 		     };
 		  }
+		  nixCats.nixosModules.default
 	       ];
 	   };
 	};
