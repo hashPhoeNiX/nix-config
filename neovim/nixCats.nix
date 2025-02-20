@@ -8,6 +8,7 @@ in {
     # this value, nixCats is the defaultPackageName you pass to mkNixosModules
     # it will be the namespace for your options.
     nixCats = {
+      enable = true;
       inherit utils;
       luaPath = "${./.}";
       #forEachSystem = utils.eachSystem inputs.nixpkgs.lib.platforms.all;
