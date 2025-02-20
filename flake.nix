@@ -60,7 +60,7 @@
 		  #nixCats.nixosModules.default
                   #nixCats.homeModule.default
 	       ];
-	       nixCats.homeModule.default = import ./home/nixcats.nix;
+          #nixCats.homeModule.default = import ./home/nixcats.nix;
 
 	   };
 	};
