@@ -28,7 +28,7 @@ in {
       categoryDefinitions.replace = ({ pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
         lspsAndRuntimeDeps = {
           general = [
-            universal-ctags
+            ctags
             curl
             lazygit
             ripgrep
@@ -196,7 +196,7 @@ in {
         categoryDefinitions.replace = ({ pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
           lspsAndRuntimeDeps = {
             general = [
-              universal-ctags
+              ctags
               curl
               lazygit
               ripgrep
