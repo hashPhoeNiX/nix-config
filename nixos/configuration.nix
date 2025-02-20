@@ -55,6 +55,12 @@
     variant = "";
   };
 
+  # OpenSSH
+  services.openssh = {
+    enabled = true;
+    permitRootLogin = "yes";
+  };
+
   # Configure console keymap
   console.keyMap = "uk";
 
