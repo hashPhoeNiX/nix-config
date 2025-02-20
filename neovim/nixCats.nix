@@ -52,7 +52,7 @@ in {
       # see :help nixCats.flake.outputs.categories
       # and
       # :help nixCats.flake.outputs.categoryDefinitions.scheme
-      categoryDefinitions = { pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
+      categoryDefinitions = {
         # to define and use a new category, simply add a new list to a set here, 
         # and later, you will include categoryname = true; in the set you
         # provide when you build the package using this builder function.
@@ -62,8 +62,8 @@ in {
         # this section is for dependencies that should be available
         # at RUN TIME for plugins. Will be available to PATH within neovim terminal
         # this includes LSPs
-        lspsAndRuntimeDeps = with pkgs; {
-          general = [
+        lspsAndRuntimeDeps = { pkgs, ... }: {
+          general = with pkgs; [
             universal-ctags
             curl
             lazygit
@@ -79,8 +79,8 @@ in {
         # NOTE: lazy doesnt care if these are in startupPlugins or optionalPlugins
         # also you dont have to download everything via nix if you dont want.
         # but you have the option, and that is demonstrated here.
-        startupPlugins = with pkgs.vimPlugins; {
-          general = [
+        startupPlugins = { pkgs, ... }: {
+          general = with pkgs.vimPlugins; [
             # LazyVim
             lazy-nvim
             LazyVim
@@ -158,7 +158,7 @@ in {
 
         # shared libraries to be added to LD_LIBRARY_PATH
         # variable available to nvim runtime
-        sharedLibraries = {
+        sharedLibraries = { pkgs, ... }: {
           general = with pkgs; [
             # libgit2
           ];
@@ -209,7 +209,7 @@ in {
       packageDefinitions = {
         # These are the names of your packages
         # you can include as many as you wish.
-        nvim = { pkgs, mkNvimPlugin, ... }: {
+        nvim = { pkgs, ... }: {
           # they contain a settings set defined above
           # see :help nixCats.flake.outputs.settings
           settings = {
@@ -230,7 +230,7 @@ in {
         # an extra test package with normal lua reload for fast edits
         # nix doesnt provide the config in this package, allowing you free reign to edit it.
         # then you can swap back to the normal pure package when done.
-        testnvim = { pkgs, mkNvimPlugin, ... }: {
+        testnvim = { pkgs, ... }: {
           settings = {
             wrapRc = false;
             unwrappedCfgPath = "/absolute/path/to/config";
