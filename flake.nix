@@ -30,13 +30,15 @@
      in {
         nixosConfigurations = {
 	        pelumi = lib.nixosSystem {
-	          inherit system nixCats;
+	          inherit system;
+            specialArgs = { inherit nixCats; };
 	          modules = [ 
 		          ./nixos/configuration.nix
 	          ];
 	        };
           test = lib.nixosSystem {
-	          inherit system nixCats;
+	          inherit system;
+            specialArgs = { inherit nixCats; };
 	          modules = [ 
 		          ./nixos/configuration.nix
 		          home-manager.nixosModules.home-manager 
