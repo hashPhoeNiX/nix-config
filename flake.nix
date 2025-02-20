@@ -12,7 +12,8 @@
  	inputs.nixpkgs.follows = "nixpkgs";
     };
     nixCats = {
-	url = "github:BirdeeHub/nixCats-nvim";
+	    url = "github:BirdeeHub/nixCats-nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     }; 
     #hyprland = {
     #    url = "github:hyprwm/Hyprland";
@@ -51,7 +52,7 @@
 		              users.test = {
 		                 imports = [ 
 			                 (import ./home/home.nix)
-                       (import ./neovim/nixCats-hm.nix)                  
+                        
 			              ];
 		              };
 		                # Optionally, use home-manager.extraSpecialArgs to pass

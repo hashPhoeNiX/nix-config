@@ -26,8 +26,8 @@ in {
       # they refer to how multiple categoryDefinitions get merged together by the module.
       # for useage of this section, refer to :h nixCats.flake.outputs.categories
       categoryDefinitions.replace = ({ pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
-        lspsAndRuntimeDeps = {
-          general = with pkgs; [
+        lspsAndRuntimeDeps = with pkgs; {
+          general = [
             universal-ctags
             curl
             lazygit
@@ -39,8 +39,8 @@ in {
             stylua
           ];
         };
-        startupPlugins = {
-          general = with pkgs.vimPlugins; [
+        startupPlugins = with pkgs.vimPlugins; {
+          general = [
             # LazyVim
             lazy-nvim
             LazyVim
