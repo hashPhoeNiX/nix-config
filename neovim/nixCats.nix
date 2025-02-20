@@ -239,6 +239,9 @@ in {
           categories = {
             general = true;
             test = false;
+	    # Match the categories defined above
+            lspsAndRuntimeDeps = true;
+            startupPlugins = true;
           };
           extra = {};
         };
