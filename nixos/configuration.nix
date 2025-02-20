@@ -58,7 +58,7 @@
   # OpenSSH
   services.openssh = {
     enable = true;
-    permitRootLogin = "yes";
+    settings.PermitRootLogin = "yes";
   };
 
   # Configure console keymap
