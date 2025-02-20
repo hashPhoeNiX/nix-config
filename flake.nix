@@ -51,7 +51,7 @@
 		              users.test = {
 		                 imports = [ 
 			                 (import ./home/home.nix)
-                        
+                       (import ./neovim/nixCats-hm.nix)                  
 			              ];
 		              };
 		                # Optionally, use home-manager.extraSpecialArgs to pass
