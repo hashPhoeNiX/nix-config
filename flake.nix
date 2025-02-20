@@ -27,6 +27,7 @@
            config.allowUnfree = true;
         };
         lib = nixpkgs.lib;
+        nixCats = nixCats;
      in {
         nixosConfigurations = {
 	        pelumi = lib.nixosSystem {
