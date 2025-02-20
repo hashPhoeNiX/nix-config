@@ -30,13 +30,13 @@
      in {
         nixosConfigurations = {
 	        pelumi = lib.nixosSystem {
-	          inherit system inputs;
+	          inherit system;
 	          modules = [ 
 		          ./nixos/configuration.nix
 	          ];
 	        };
           test = lib.nixosSystem {
-	          inherit system inputs;
+	          inherit system;
 	          modules = [ 
 		          ./nixos/configuration.nix
 		          home-manager.nixosModules.home-manager 
