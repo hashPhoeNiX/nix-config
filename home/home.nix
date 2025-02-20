@@ -19,10 +19,10 @@
   # environment.
   #fonts.fontconfig.enable = true;
   # New format (fixed)
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fantasque-sans-mono
-  ];
+  #fonts.packages = with pkgs; [
+  #  nerd-fonts.jetbrains-mono
+  #  nerd-fonts.fantasque-sans-mono
+  #];
   home.packages = with pkgs; [
     htop
     #neovim
@@ -35,12 +35,12 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    #(pkgs.nerdfonts.override { 
-    #  fonts = [ 
-    #    "FantasqueSansMono"
-    #    "JetBrainsMono"
-    #  ]; 
-    #})
+    (pkgs.nerdfonts.override { 
+      fonts = [ 
+        "FantasqueSansMono"
+        "JetBrainsMono"
+      ]; 
+    })
     #jetbrains-mono
     #fantasque-sans-mono
 
