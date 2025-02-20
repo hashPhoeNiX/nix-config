@@ -157,7 +157,7 @@ in {
                 better-escape-nvim
                 comment-nvim
                 todo-comments-nvim
-                zellij-nav-nvim
+                #zellij-nav-nvim
               ];
               general = with pkgs.vimPlugins; [
                 plenary-nvim
