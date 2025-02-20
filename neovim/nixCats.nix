@@ -14,28 +14,23 @@ in {
       packageNames = ["myNixModuleNvim"];
       luaPath = "${./.}";
       # you could also import lua from the flake though, which we do for user config after this config for root packageDef is your settings and categories for this package. categoryDefinitions.replace will replace the whole categoryDefinitions with a new one
-      categoryDefinitions.replace = {pkgs, ...}: {
-        propagatedBuildInputs = {
-          # add to general or create a new list called whatever
-          general = [];
-        };
+      categoryDefinitions.replace = {pkgs, ...}: { 
         lspsAndRuntimeDeps = {
           general = with pkgs; [
             universal-ctags
+            curl
+            lazygit
             ripgrep
-            zls
             fd
-            rust-analyzer
-            cargo
+            stdenv.cc.cc
             lua-language-server
-            nodePackages_latest.bash-language-server
+            nil # I would go for nixd but lazy chooses this one idk
+            stylua
             pyright
             black
             mypy
             ruff
             nixd
-            alejandra
-            lldb_17
           ];
           neonixdev = {
             # also you can do this.
@@ -43,131 +38,75 @@ in {
             # nix-doc tags will make your tags much better in nix but only if you have nil as well for some reason
           };
         };
-        startupPlugins = {
-          # debug = with pkgs.vimPlugins; [
-          # ];
-          neonixdev = with pkgs.vimPlugins; [
-            neodev-nvim
-            neoconf-nvim
-          ];
-          # yes these category names are arbitrary
-          markdown = with pkgs.vimPlugins; [
-            markdown-preview-nvim
-            markview-nvim
-          ];
-          texlive = with pkgs; [
-            vimPlugins.vimtex
-            texliveFull
-          ];
-          lazy = with pkgs.vimPlugins; [
+      
+        startupPlugins = with pkgs.vimPlugins; {
+          general = [
+            # LazyVim
             lazy-nvim
+            LazyVim
+            bufferline-nvim
+            lazydev-nvim
+            cmp-buffer
+            cmp-nvim-lsp
+            cmp-path
+            cmp_luasnip
+            conform-nvim
+            dashboard-nvim
+            dressing-nvim
+            flash-nvim
+            friendly-snippets
+            gitsigns-nvim
+            indent-blankline-nvim
+            lualine-nvim
+            neo-tree-nvim
+            neoconf-nvim
+            neodev-nvim
+            noice-nvim
+            nui-nvim
+            nvim-cmp
+            nvim-lint
+            nvim-lspconfig
+            nvim-notify
+            nvim-spectre
+            nvim-treesitter-context
+            nvim-treesitter-textobjects
+            nvim-ts-autotag
+            nvim-ts-context-commentstring
+            nvim-web-devicons
+            persistence-nvim
+            plenary-nvim
+            telescope-fzf-native-nvim
+            telescope-nvim
+            todo-comments-nvim
+            tokyonight-nvim
+            trouble-nvim
+            vim-illuminate
+            vim-startuptime
+            which-key-nvim
+            snacks-nvim
+            nvim-treesitter-textobjects
+            nvim-treesitter.withAllGrammars
+            # This is for if you only want some of the grammars
+            # (nvim-treesitter.withPlugins (
+            #   plugins: with plugins; [
+            #     nix
+            #     lua
+            #   ]
+            # ))
+
+            # sometimes you have to fix some names
+            { plugin = luasnip; name = "LuaSnip"; }
+            { plugin = catppuccin-nvim; name = "catppuccin"; }
+            { plugin = mini-ai; name = "mini.ai"; }
+            { plugin = mini-icons; name = "mini.icons"; }
+            { plugin = mini-bufremove; name = "mini.bufremove"; }
+            { plugin = mini-comment; name = "mini.comment"; }
+            { plugin = mini-indentscope; name = "mini.indentscope"; }
+            { plugin = mini-pairs; name = "mini.pairs"; }
+            { plugin = mini-surround; name = "mini.surround"; }
+            # you could do this within the lazy spec instead if you wanted
+            # and get the new names from `:NixCats pawsible` debug command
           ];
-          general = {
-            vimPlugins = {
-              # you can make a subcategory
-              tree-sitterALL = with pkgs.vimPlugins; [
-                nvim-treesitter.withAllGrammars
-              ];
-              tree-sitterPlugins = with pkgs.vimPlugins; [
-                nvim-treesitter-parsers.awk
-                nvim-treesitter-parsers.bash
-                nvim-treesitter-parsers.bibtex
-                nvim-treesitter-parsers.css
-                nvim-treesitter-parsers.csv
-                nvim-treesitter-parsers.go
-                nvim-treesitter-parsers.html
-                nvim-treesitter-parsers.hyprlang
-                nvim-treesitter-parsers.json
-                nvim-treesitter-parsers.kdl
-                nvim-treesitter-parsers.lua
-                nvim-treesitter-parsers.markdown
-                nvim-treesitter-parsers.nix
-                nvim-treesitter-parsers.nu
-                nvim-treesitter-parsers.powershell
-                nvim-treesitter-parsers.python
-                nvim-treesitter-parsers.rasi
-                nvim-treesitter-parsers.regex
-                nvim-treesitter-parsers.rust
-                nvim-treesitter-parsers.scss
-                nvim-treesitter-parsers.slint
-                nvim-treesitter-parsers.ssh_config
-                nvim-treesitter-parsers.toml
-                nvim-treesitter-parsers.xml
-                nvim-treesitter-parsers.yaml
-                nvim-treesitter-parsers.yuck
-                nvim-treesitter-parsers.zig
-                nvim-treesitter-textobjects
-              ];
-              cmp = with pkgs.vimPlugins; [
-                # cmp stuff
-                nvim-cmp
-                luasnip
-                friendly-snippets
-                cmp_luasnip
-                cmp-buffer
-                cmp-path
-                cmp-nvim-lua
-                cmp-nvim-lsp
-                cmp-cmdline
-                cmp-nvim-lsp-signature-help
-                cmp-cmdline-history
-                lspkind-nvim
-                crates-nvim
-                null-ls-nvim
-              ];
-              debugging = with pkgs.vimPlugins; [
-                nvim-dap
-                nvim-dap-ui
-                nvim-dap-virtual-text
-                nvim-dap-python
-              ];
-              git = with pkgs.vimPlugins; [
-                gitsigns-nvim
-                vim-sleuth
-                vim-fugitive
-              ];
-              ui = with pkgs.vimPlugins; [
-                renamer-nvim
-                alpha-nvim
-                neo-tree-nvim
-                fidget-nvim
-                lualine-nvim
-                nvim-notify
-                nui-nvim
-                noice-nvim
-              ];
-              beautify = with pkgs.vimPlugins; [
-                nvim-autopairs
-                nvim-highlight-colors
-                rainbow-delimiters-nvim
-                tokyonight-nvim
-                nvim-web-devicons
-              ];
-              otherlsp = with pkgs.vimPlugins; [
-                nvim-nu
-                nvim-lspconfig
-                rustaceanvim
-              ];
-              core = with pkgs.vimPlugins; [
-                telescope-fzf-native-nvim
-                telescope-nvim
-                undotree
-                nvim-surround
-                indent-blankline-nvim
-                better-escape-nvim
-                comment-nvim
-                todo-comments-nvim
-                #zellij-nav-nvim
-              ];
-              general = with pkgs.vimPlugins; [
-                plenary-nvim
-                which-key-nvim
-                oil-nvim
-                ChatGPT-nvim
-                twilight-nvim
-              ];
-            };
-          };
         };
       };
 
@@ -185,27 +124,10 @@ in {
             };
             # and a set of categories that you want (and other information to pass to lua)
             categories = {
-              general.vimPlugins = {
-                tree-sitterPlugins = true;
-                tree-sitterALL = false;
-                debugging = true;
-                git = true;
-                ui = true;
-                beautify = true;
-                cmp = true;
-                otherlsp = true;
-                core = true;
-                general = true;
-              };
-              markdown = true;
-              # NOTE: true for vimtex
-              texlive = false;
-              startupPlugins = true;
-              lspsAndRuntimeDeps = {
-                general = true;
-                neonixdev = true;
-              };
+              general = true;
+              test = false;
             };
+            extra = {};
           };
         };
       };
