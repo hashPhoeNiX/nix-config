@@ -62,7 +62,7 @@ in {
         # this section is for dependencies that should be available
         # at RUN TIME for plugins. Will be available to PATH within neovim terminal
         # this includes LSPs
-        lspsAndRuntimeDeps = { pkgs, ... }: {
+        lspsAndRuntimeDeps = {
           general = with pkgs; [
             universal-ctags
             curl
@@ -79,7 +79,7 @@ in {
         # NOTE: lazy doesnt care if these are in startupPlugins or optionalPlugins
         # also you dont have to download everything via nix if you dont want.
         # but you have the option, and that is demonstrated here.
-        startupPlugins = { pkgs, ... }: {
+        startupPlugins = {
           general = with pkgs.vimPlugins; [
             # LazyVim
             lazy-nvim
@@ -158,7 +158,7 @@ in {
 
         # shared libraries to be added to LD_LIBRARY_PATH
         # variable available to nvim runtime
-        sharedLibraries = { pkgs, ... }: {
+        sharedLibraries = {
           general = with pkgs; [
             # libgit2
           ];
