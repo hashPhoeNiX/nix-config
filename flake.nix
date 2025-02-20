@@ -19,7 +19,7 @@
     #};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixCats, ... }:
      let
         system = "aarch64-linux";
         pkgs = import nixpkgs {
@@ -30,20 +30,20 @@
      in {
         nixosConfigurations = {
 	        pelumi = lib.nixosSystem {
-	          inherit system;
+	          inherit system nixCats;
 	          modules = [ 
 		          ./nixos/configuration.nix
 	          ];
 	        };
           test = lib.nixosSystem {
-	          inherit system;
+	          inherit system nixCats;
 	          modules = [ 
 		          ./nixos/configuration.nix
 		          home-manager.nixosModules.home-manager 
 		          {
                 home-manager = {
 		              useGlobalPkgs = true;
-                              useUserPackages = true;
+                  useUserPackages = true;
 		              #users.test = import ./home/home.nix;
 		              users.test = {
 		                 imports = [ 
