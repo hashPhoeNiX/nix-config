@@ -217,7 +217,7 @@ in {
             wrapRc = true;
             # IMPORTANT:
             # your alias may not conflict with your other packages.
-            # aliases = [ "vim" ];
+            aliases = [ "vim" "nv" ];
             # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
           # and a set of categories that you want
@@ -225,6 +225,9 @@ in {
           categories = {
             general = true;
             test = false;
+            # Match the categories defined above
+            lspsAndRuntimeDeps = true;
+            startupPlugins = true;
           };
           extra = {};
         };
@@ -239,7 +242,7 @@ in {
           categories = {
             general = true;
             test = false;
-	    # Match the categories defined above
+	          # Match the categories defined above
             lspsAndRuntimeDeps = true;
             startupPlugins = true;
           };
