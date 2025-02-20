@@ -57,7 +57,7 @@
 
   # OpenSSH
   services.openssh = {
-    enabled = true;
+    enable = true;
     permitRootLogin = "yes";
   };
 
