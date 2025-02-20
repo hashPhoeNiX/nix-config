@@ -1,18 +1,16 @@
 {inputs, ...}: let
-  # utils = inputs.nixCats.utils; the options for this are defined at the end of the file, and will be how to include this template module in your system configuration.
+  utils = inputs.nixCats.utils; # the options for this are defined at the end of the file, and will be how to include this template module in your system configuration.
 in {
   imports = [
     inputs.nixCats.nixosModules.default
-    inputs.nixCats.utils
-    inputs.nixpkgs
   ];
   config = {
     # this value, nixCats is the defaultPackageName you pass to mkNixosModules
     # it will be the namespace for your options.
     nixCats = {
-      inherit (inputs.nixCats) utils;
+      inherit utils;
       luaPath = "${./.}";
-      forEachSystem = inputs.nixCats.utils.eachSystem inputs.nixpkgs.lib.platforms.all;
+      forEachSystem = utils.eachSystem inputs.nixpkgs.lib.platforms.all;
       # the following extra_pkg_config contains any values
       # which you want to pass to the config set of nixpkgs
       # import nixpkgs { config = extra_pkg_config; inherit system; }
@@ -40,7 +38,7 @@ in {
         # `plugins-<pluginName>`
         # Once we add this overlay to our nixpkgs, we are able to
         # use `pkgs.neovimPlugins`, which is a set of our plugins.
-        (inputs.nixCats.utils.standardPluginOverlay inputs)
+        (utils.standardPluginOverlay inputs)
         # add any other flake overlays here.
 
         # when other people mess up their overlays by wrapping them with system,
