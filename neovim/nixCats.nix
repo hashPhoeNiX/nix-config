@@ -1,8 +1,8 @@
-{nixCats, ...}: let
+{inputs, ...}: let
   # utils = inputs.nixCats.utils; the options for this are defined at the end of the file, and will be how to include this template module in your system configuration.
 in {
   imports = [
-    nixCats.nixosModules.default
+    inputs.nixCats.nixosModules.default
   ];
   config = {
     # this value, nixCats is the defaultPackageName you pass to mkNixosModules

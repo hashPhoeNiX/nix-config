@@ -31,14 +31,14 @@
         nixosConfigurations = {
 	        pelumi = lib.nixosSystem {
 	          inherit system;
-            specialArgs = { inherit nixCats; };
+            specialArgs = { inherit inputs; };
 	          modules = [ 
 		          ./nixos/configuration.nix
 	          ];
 	        };
           test = lib.nixosSystem {
 	          inherit system;
-            specialArgs = { inherit nixCats; };
+            specialArgs = { inherit inputs; };
 	          modules = [ 
 		          ./nixos/configuration.nix
 		          home-manager.nixosModules.home-manager 
