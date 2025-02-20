@@ -27,8 +27,8 @@ in {
       # for useage of this section, refer to :h nixCats.flake.outputs.categories
       categoryDefinitions.replace = ({ pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
         lspsAndRuntimeDeps = {
-          general = [
-            ctags
+          general = with pkgs; [
+            universal-ctags
             curl
             lazygit
             ripgrep
@@ -40,7 +40,7 @@ in {
           ];
         };
         startupPlugins = {
-          general = [
+          general = with pkgs.vimPlugins; [
             # LazyVim
             lazy-nvim
             LazyVim
@@ -194,9 +194,9 @@ in {
         enable = true;
         packageNames = [ "REPLACE_MEs_VIM" ];
         categoryDefinitions.replace = ({ pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
-          lspsAndRuntimeDeps = {
+          lspsAndRuntimeDeps = with pkgs; {
             general = [
-              ctags
+              universal-ctags
               curl
               lazygit
               ripgrep
@@ -207,7 +207,7 @@ in {
               stylua
             ];
           };
-          startupPlugins = {
+          startupPlugins = with pkgs.vimPlugins; {
             general = [
               # LazyVim
               lazy-nvim
