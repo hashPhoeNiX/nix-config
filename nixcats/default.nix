@@ -41,11 +41,11 @@ in {
         };
         startupPlugins = with pkgs.vimPlugins; {
           general = [
-            LazyVim
-            #lazy-nvim
+            #LazyVim
+            lazy-nvim
             LazyVim
             bufferline-nvim
-            lazydev-nvim
+            #lazydev-nvim
             cmp-buffer
             cmp-nvim-lsp
             cmp-path
@@ -166,7 +166,7 @@ in {
             wrapRc = true;
             # IMPORTANT:
             # your alias may not conflict with your other packages.
-            aliases = [ "vim" "homeVim" ];
+            aliases = [ "vim" "nv" "nvim" ];
             # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
           # and a set of categories that you want
