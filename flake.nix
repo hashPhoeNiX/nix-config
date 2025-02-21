@@ -51,12 +51,14 @@
 		              #users.test = import ./home/home.nix;
 		              users.test = {
 		                 imports = [ 
-			                 (import ./home/home.nix)
-                        
+			                 (import ./home/home.nix) 
 			              ];
 		              };
 		                # Optionally, use home-manager.extraSpecialArgs to pass
                                 # arguments to home.nix
+                  extraSpecialArgs = {
+                    inherit inputs;
+                  };
 		             };
 		          }
       		    #./home/nixcats.nix
