@@ -83,6 +83,7 @@ in {
             vim-illuminate
             vim-startuptime
             which-key-nvim
+            oil-nvim
             #snacks-nvim
             nvim-treesitter-textobjects
             nvim-treesitter.withAllGrammars
