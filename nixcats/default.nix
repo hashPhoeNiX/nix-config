@@ -30,8 +30,17 @@ in {
           general = [];
         };
         startupPlugins = {
-          general = [];
-          # themer = with pkgs; [
+          general = with pkgs; [
+            universal-ctags
+            curl
+            lazygit
+            ripgrep
+            fd
+            stdenv.cc.cc
+            lua-language-server
+            nil # I would go for nixd but lazy chooses this one idk
+            stylua
+          ];          # themer = with pkgs; [
           #   # you can even make subcategories based on categories and settings sets!
           #   (builtins.getAttr packageDef.categories.colorscheme {
           #       "onedark" = onedark-vim;
