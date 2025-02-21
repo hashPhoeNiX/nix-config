@@ -13,7 +13,7 @@
     };
     nixCats = {
 	    url = "github:BirdeeHub/nixCats-nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     }; 
     #hyprland = {
     #    url = "github:hyprwm/Hyprland";
