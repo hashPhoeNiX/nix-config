@@ -27,9 +27,6 @@ in {
       # for useage of this section, refer to :h nixCats.flake.outputs.categories
       categoryDefinitions.replace = ({ pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef: {
         lspsAndRuntimeDeps = {
-          general = [];
-        };
-        startupPlugins = {
           general = with pkgs; [
             universal-ctags
             curl
@@ -40,7 +37,11 @@ in {
             lua-language-server
             nil # I would go for nixd but lazy chooses this one idk
             stylua
-          ];          # themer = with pkgs; [
+          ];        
+        };
+        startupPlugins = {
+          general = [];
+          # themer = with pkgs; [
           #   # you can even make subcategories based on categories and settings sets!
           #   (builtins.getAttr packageDef.categories.colorscheme {
           #       "onedark" = onedark-vim;
