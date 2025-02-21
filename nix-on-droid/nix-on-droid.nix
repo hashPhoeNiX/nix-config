@@ -38,6 +38,7 @@
     which
     emacs
     ranger
+    openssh
 
     # home manager
     home-manager
