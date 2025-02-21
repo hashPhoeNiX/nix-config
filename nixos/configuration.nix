@@ -7,7 +7,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      #./hardware-configuration.nix
+	./hardware-configuration-utm.nix
+
       #../neovim/nixCats.nix
     ];
 
