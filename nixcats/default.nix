@@ -44,12 +44,12 @@ in {
             #LazyVim
             lazy-nvim
             LazyVim
-            #blink-cmp
+            blink-cmp
             bufferline-nvim
             lazydev-nvim
-            cmp-buffer
-            cmp-nvim-lsp
-            cmp-path
+            #cmp-buffer
+            #cmp-nvim-lsp
+            #cmp-path
             cmp_luasnip
             conform-nvim
             dashboard-nvim
@@ -64,7 +64,7 @@ in {
             neodev-nvim
             noice-nvim
             nui-nvim
-            nvim-cmp
+            #nvim-cmp
             nvim-lint
             nvim-lspconfig
             nvim-notify
