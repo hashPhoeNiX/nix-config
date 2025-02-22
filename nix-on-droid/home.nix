@@ -24,5 +24,5 @@
       theme = "sorin"; #"robbyrussell";
     };
   };
-};
+}
 
