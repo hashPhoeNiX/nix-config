@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   # Simply install just the packages
@@ -33,7 +33,7 @@
     zip
     unzip
     ncurses
-    curl:w
+    curl
     
     helix
     which
@@ -73,7 +73,7 @@
     useGlobalPkgs = true;
   
     config = import ./home.nix {
-      inherit config lib pkgs;
+      inherit config lib pkgs inputs;
     };
       #{ config, lib, pkgs, ... }:
       #{
