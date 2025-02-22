@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       #./hardware-configuration.nix
-	./hardware-configuration-utm.nix
+	    ./hardware-configuration-utm.nix
 
       #../neovim/nixCats.nix
     ];
@@ -65,7 +65,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "uk";
+  console.keyMap = "us";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

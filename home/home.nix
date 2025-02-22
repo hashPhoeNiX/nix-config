@@ -94,7 +94,11 @@
   programs = {
     home-manager.enable = true;
     kitty = {
-      font.size = "8";
+      enable = true;
+      #font = {
+      #  name = "DejaVu Sans";
+      #  size = 8;
+      #};
     };
   };
 }
