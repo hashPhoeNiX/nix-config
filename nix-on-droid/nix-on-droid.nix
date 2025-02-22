@@ -71,7 +71,7 @@
     backupFileExtension = "hm-bak";
     useGlobalPkgs = true;
   
-    config = import ./home.nix
+    config = import ./home.nix;
       #{ config, lib, pkgs, ... }:
       #{
       #  # Read the changelog before changing this value
