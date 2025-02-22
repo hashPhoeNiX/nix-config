@@ -45,7 +45,7 @@ in {
             lazy-nvim
             LazyVim
             bufferline-nvim
-            #lazydev-nvim
+            lazydev-nvim
             cmp-buffer
             cmp-nvim-lsp
             cmp-path
@@ -84,7 +84,7 @@ in {
             vim-startuptime
             which-key-nvim
             oil-nvim
-            #snacks-nvim
+            snacks-nvim
             nvim-treesitter-textobjects
             nvim-treesitter.withAllGrammars
             # This is for if you only want some of the grammars
@@ -98,13 +98,13 @@ in {
             # sometimes you have to fix some names
             { plugin = luasnip; name = "LuaSnip"; }
             { plugin = catppuccin-nvim; name = "catppuccin"; }
-            #{ plugin = mini-ai; name = "mini.ai"; }
-            #{ plugin = mini-icons; name = "mini.icons"; }
-            #{ plugin = mini-bufremove; name = "mini.bufremove"; }
-            #{ plugin = mini-comment; name = "mini.comment"; }
-            #{ plugin = mini-indentscope; name = "mini.indentscope"; }
-            #{ plugin = mini-pairs; name = "mini.pairs"; }
-            #{ plugin = mini-surround; name = "mini.surround"; }
+            { plugin = mini-ai; name = "mini.ai"; }
+            { plugin = mini-icons; name = "mini.icons"; }
+            { plugin = mini-bufremove; name = "mini.bufremove"; }
+            { plugin = mini-comment; name = "mini.comment"; }
+            { plugin = mini-indentscope; name = "mini.indentscope"; }
+            { plugin = mini-pairs; name = "mini.pairs"; }
+            { plugin = mini-surround; name = "mini.surround"; }
             # you could do this within the lazy spec instead if you wanted
             # and get the new names from `:NixCats pawsible` debug command
           ];
