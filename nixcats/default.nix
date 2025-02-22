@@ -56,6 +56,7 @@ in {
             dressing-nvim
             flash-nvim
             friendly-snippets
+            fzf-lua
             gitsigns-nvim
             indent-blankline-nvim
             lualine-nvim
