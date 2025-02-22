@@ -44,6 +44,7 @@ in {
             #LazyVim
             lazy-nvim
             LazyVim
+            blink-cmp
             bufferline-nvim
             lazydev-nvim
             cmp-buffer
