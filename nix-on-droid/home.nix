@@ -1,11 +1,9 @@
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   # Read the changelog before changing this value
   home.stateVersion = "23.11";
   imports = [
-    ../nixcats {
-      inherit inputs;
-    }
+    ../nixcats
   ];
   # insert home-manager config
   programs.zsh = {

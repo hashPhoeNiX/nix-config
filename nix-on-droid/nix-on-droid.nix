@@ -72,9 +72,10 @@
     backupFileExtension = "hm-bak";
     useGlobalPkgs = true;
   
-    config = import ./home.nix {
-      inherit config lib pkgs inputs;
-    };
+    config = import ./home.nix;
+    extraSpecialArgs = {
+      inherit inputs;
+     };
       #{ config, lib, pkgs, ... }:
       #{
       #  # Read the changelog before changing this value
