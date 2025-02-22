@@ -15,14 +15,20 @@
     nixCats = {
 	    url = "github:BirdeeHub/nixCats-nvim";
       #inputs.nixpkgs.follows = "nixpkgs";
-    }; 
+    };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     #hyprland = {
     #    url = "github:hyprwm/Hyprland";
     #	inputs.nixpkgs.follows = "nixpkgs";
     #};
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixCats, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixCats, nix-on-droid, ... }:
      let
         system = "aarch64-linux";
         pkgs = import nixpkgs {
@@ -69,7 +75,37 @@
 	          ];
           #nixCats.homeModule.default = import ./home/nixcats.nix;
 
-	   };
-	};
+	        };
+	      };
+        nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+          modules = [
+            ./nix-on-droid/nix-on-droid.nix
+
+            # list of extra modules for Nix-on-Droid system
+            { nix.registry.nixpkgs.flake = nixpkgs; }
+            # ./path/to/module.nix
+
+            # or import source out-of-tree modules like:
+            # flake.nixOnDroidModules.module
+          ];
+
+          # list of extra special args for Nix-on-Droid modules
+          extraSpecialArgs = {
+            # rootPath = ./.;
+          };
+
+          # set nixpkgs instance, it is recommended to apply `nix-on-droid.overlays.default`
+          pkgs = import nixpkgs {
+            system = "aarch64-linux";
+            #system.defaultShell = pkgs.fish;
+            overlays = [
+              nix-on-droid.overlays.default
+              # add other overlays
+            ];
+          };
+
+          # set path to home-manager flake
+          home-manager-path = home-manager.outPath;
+        };
     };
 }
