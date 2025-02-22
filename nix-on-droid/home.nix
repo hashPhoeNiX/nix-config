@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   # Read the changelog before changing this value
   home.stateVersion = "23.11";

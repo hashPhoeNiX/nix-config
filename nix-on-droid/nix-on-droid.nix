@@ -33,7 +33,8 @@
     zip
     unzip
     ncurses
-    curl
+    curl:w
+    
     helix
     which
     emacs
