@@ -19,7 +19,7 @@
   ];
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  #fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = true;
   # New format (fixed)
   #fonts.packages = with pkgs; [
   #  nerd-fonts.jetbrains-mono
