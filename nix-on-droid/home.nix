@@ -6,6 +6,10 @@
     ../nixcats
   ];
   # insert home-manager config
+  home.packages = with pkgs; [
+    fantasque-sans-mono
+    jetbrains-mono
+  ];
   programs.zsh = {
     enable = true;
     enableCompletion = true;
