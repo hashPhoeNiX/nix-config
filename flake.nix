@@ -79,8 +79,6 @@
 	      };
         nixOnDroidConfigurations = {
           default = nix-on-droid.lib.nixOnDroidConfiguration {
-            specialArgs = { inherit lib inputs; };
-
             modules = [
               ./nix-on-droid/nix-on-droid.nix
 
