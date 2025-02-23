@@ -58,7 +58,8 @@
 
   #programs.zsh = {
   #    enable = true;
-  # };
+  # }
+  terminal.font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetbrainsMonoTTF.ttf";
 
   user.shell = "${pkgs.fish}/bin/fish";
   # Set your time zone
