@@ -5,6 +5,7 @@
   imports = [
     ../nixcats
   ];
+  fonts.fontconfig.enable = true;
   # insert home-manager config
   home.packages = with pkgs; [
     fantasque-sans-mono
