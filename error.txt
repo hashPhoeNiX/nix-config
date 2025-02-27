@@ -1,0 +1,15 @@
+Failed to run `config` for blink.cmp
+
+...ackages/start/blink.cmp/lua/blink/cmp/config/sources.lua:104: `sources.cmdline` has been replaced with `cmdline.sources`
+
+# stacktrace:
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/blink.cmp/lua/blink/cmp/config/sources.lua:104 _in_ **validate**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/blink.cmp/lua/blink/cmp/config/init.lua:54 _in_ **validate**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/blink.cmp/lua/blink/cmp/config/init.lua:113 _in_ **merge_with**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/blink.cmp/lua/blink/cmp/init.lua:20 _in_ **setup**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/LazyVim/lua/lazyvim/plugins/extras/coding/blink.lua:152 _in_ **config**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/LazyVim/lua/lazyvim/plugins/lsp/init.lua:181 _in_ **config**
+  - vim/_editor.lua:0 _in_ **cmd**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/snacks.nvim/lua/snacks/picker/actions.lua:112 _in_ **jump**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/snacks.nvim/lua/snacks/explorer/actions.lua:263 _in_ **fn**
+  - /nix/store/2zc878l9xwjr2qbghmgsmdk5z8abkax2-vim-pack-dir/pack/myNeovimPackages/start/snacks.nvim/lua/snacks/win.lua:339
