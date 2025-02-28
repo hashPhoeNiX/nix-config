@@ -103,13 +103,13 @@
   # Install firefox.
   programs = {
     firefox.enable = true;
-    hyprland = {
-      enable = true;
-      # set flake package
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      # set the portal package to make sure they are in sync
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    };
+    #hyprland = {
+    #  enable = true;
+    #  # set flake package
+    #  package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    #  # set the portal package to make sure they are in sync
+    #  portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    #};
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -150,5 +150,11 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    };
+  };
 }
