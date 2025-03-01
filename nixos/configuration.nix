@@ -98,6 +98,7 @@
     packages = with pkgs; [
     #  thunderbird
     ];
+    shell = "${pkgs.zsh}/bin/zsh";
   };
 
   # Install firefox.
@@ -131,6 +132,25 @@
   #   enableSSHSupport = true;
   # };
 
+  # Hardware
+  #hardware.opengl = {
+  #  enable = true;
+  #  extraPackages = with pkgs; [
+  #    mesa.drivers
+  #  ];
+  #};
+  #virtualisation.vmVariant = {
+  #  # Autologin, passwordless sudo
+  #  services.getty.autologinUser = "test";
+  #  security.sudo.wheelNeedsPassword = false;
+
+  #  # QEMU options to run hardware-accelerated VM
+  #  virtualisation.qemu.options = [
+  #    "-vga virtio"
+  #    "-device virtio-gpu-gl"
+  #    "-display gtk,gl=on"
+  #  ];
+  #};
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
@@ -152,6 +172,7 @@
 
   nix = {
     settings = {
+      auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
       substituters = ["https://hyprland.cachix.org"];
       trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
