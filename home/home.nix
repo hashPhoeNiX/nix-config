@@ -146,7 +146,7 @@
       syntaxHighlighting.enable = true;
       shellAliases = {
         ll = "ls -l";
-        update = "sudo nixos-rebuild switch --flake ~/nix-config/flake.nix#test";
+        nixos-update = "sudo nixos-rebuild switch --flake ~/nix-config/flake.nix#test";
       };
       oh-my-zsh = {
         enable = true;

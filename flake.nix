@@ -5,7 +5,7 @@
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs = {
       #url = "github:nixos/nixpkgs/release-24.05";
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
     home-manager = {
         #url = "github:nix-community/home-manager/release-24.05";
@@ -21,13 +21,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
+    # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
     hyprland = {
         url = "github:hyprwm/Hyprland";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixCats, nix-on-droid, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nixCats, nix-on-droid, nix-darwin, nix-homebrew, homebrew-core, homebrew-bundle, homebrew-cask, ... }:
      let
         system = "aarch64-linux";
         pkgs = import nixpkgs {
@@ -67,15 +86,57 @@
                   };
 		             };
 		          }
-      		    #./home/nixcats.nix
-		          #./home/nixcats-home.nix
-		          #nixCats.nixosModules.default
-                  #nixCats.homeModule.default
 	          ];
           #nixCats.homeModule.default = import ./home/nixcats.nix;
 
 	        };
 	      };
+        darwinConfiguration."phoenix-mac" = nix-darwin.lib.darwinSystem {
+          modules = [
+            ./nix-darwin/configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.phoenix-mac = {
+                  imports = [ 
+                    (import ./home/home.nix)
+                  ];
+                };
+                
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+              }; 
+            }
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                # Install Homebrew under the default prefix
+                enable = true;
+
+                # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+                enableRosetta = true;
+
+                # User owning the Homebrew prefix
+                user = "oluwapelumiadeosun";
+
+                # Optional: Declarative tap management
+                taps = {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                };
+
+                # Optional: Enable fully-declarative tap management
+                #
+                # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+                mutableTaps = false;
+              };
+            }
+          ];
+        };
         nixOnDroidConfigurations = {
           default = nix-on-droid.lib.nixOnDroidConfiguration {
             modules = [
