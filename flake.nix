@@ -92,6 +92,7 @@
 	        };
 	      };
         darwinConfiguration."phoenix-mac" = nix-darwin.lib.darwinSystem {
+          inherit system;
           modules = [
             ./nix-darwin/configuration.nix
             home-manager.darwinModules.home-manager
